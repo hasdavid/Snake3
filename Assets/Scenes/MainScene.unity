@@ -432,7 +432,7 @@ Transform:
   - {fileID: 1546920081}
   - {fileID: 325136656}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &157204181
 GameObject:
@@ -1497,6 +1497,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7601021972735981435, guid: 174da2b688dfd9549a81292f03dc22d3, type: 3}
   m_PrefabInstance: {fileID: 1249509735}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &537667093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 537667094}
+  m_Layer: 0
+  m_Name: Camera Anchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &537667094
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537667093}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1292173924}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &621940046 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7601021972735981435, guid: 174da2b688dfd9549a81292f03dc22d3, type: 3}
@@ -1880,6 +1911,7 @@ GameObject:
   - component: {fileID: 844530293}
   - component: {fileID: 844530292}
   - component: {fileID: 844530291}
+  - component: {fileID: 844530294}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1938,6 +1970,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0fd754df9edce9468cc963c8269109c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &844530294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844530289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e85ea6ddd504f23986ba49ada1eaebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cameraTf: {fileID: 1849604946}
+  _snakeTf: {fileID: 1292173924}
+  _worldTf: {fileID: 946813079}
+  _cameraDistance: 15
 --- !u!4 &866643238 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7601021972735981435, guid: 174da2b688dfd9549a81292f03dc22d3, type: 3}
@@ -2081,7 +2129,7 @@ Transform:
   - {fileID: 1720401382}
   - {fileID: 627704380}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &956086592 stripped
 Transform:
@@ -2808,7 +2856,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e0c938253d4bbf8395f117dd1dd32d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _positionDebug: {x: 0, y: 0, z: 0}
 --- !u!4 &1292173924
 Transform:
   m_ObjectHideFlags: 0
@@ -2823,9 +2870,9 @@ Transform:
   m_Children:
   - {fileID: 1694977304}
   - {fileID: 1890185295}
-  - {fileID: 1849604946}
+  - {fileID: 537667094}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &1369622421
 GameObject:
@@ -3717,7 +3764,7 @@ GameObject:
   - component: {fileID: 1849604944}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3788,14 +3835,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1849604943}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 13, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1292173924}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1871363492
 GameObject:
   m_ObjectHideFlags: 0
