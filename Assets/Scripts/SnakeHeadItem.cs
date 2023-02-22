@@ -6,16 +6,19 @@ namespace Snake3
 {
     public class SnakeHeadItem : SnakeSegmentItem
     {
-        [SerializeField] private Transform _headPlaceholderTf;
         [SerializeField] private Direction _lastDirection;
 
         public UnityEvent FoodEaten;
+        public UnityEvent SnakeCrashed;
 
         private bool _createChild;
 
         public void DoMovement(Direction direction)
         {
-            direction = (direction == Direction.None) ? _lastDirection : direction;
+            if (direction == Direction.None || direction == _lastDirection.Opposite())
+            {
+                direction = _lastDirection;
+            }
 
             var movementDelta = Vector3Int.RoundToInt(transform.rotation * direction.AsVector3Int());
             var newPosition = Position + movementDelta;
@@ -27,8 +30,6 @@ namespace Snake3
                 newPosition += positionCorrection;
                 rotation = rotationCorrection;
             }
-
-            //_headPlaceholderTf.position = newPosition;
 
             RotateTo(rotation);
             MoveWithChild(newPosition, _createChild);
@@ -69,6 +70,10 @@ namespace Snake3
             {
                 FoodEaten.Invoke();
                 _createChild = true;
+            }
+            else if (other.CompareTag("BodySegment"))
+            {
+                SnakeCrashed.Invoke();
             }
         }
     }

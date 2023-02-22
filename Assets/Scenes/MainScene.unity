@@ -351,7 +351,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3745256461952696404, guid: a6fd6324e8b96ce458fb3ef7ffabdfde, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3745256461952696404, guid: a6fd6324e8b96ce458fb3ef7ffabdfde, type: 3}
       propertyPath: m_LocalPosition.x
@@ -853,7 +853,7 @@ PrefabInstance:
       objectReference: {fileID: 171717803}
     - target: {fileID: 3745256461952696404, guid: a6fd6324e8b96ce458fb3ef7ffabdfde, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3745256461952696404, guid: a6fd6324e8b96ce458fb3ef7ffabdfde, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1166,7 +1166,7 @@ PrefabInstance:
       objectReference: {fileID: 1439036248}
     - target: {fileID: 3745256461952696404, guid: a6fd6324e8b96ce458fb3ef7ffabdfde, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3745256461952696404, guid: a6fd6324e8b96ce458fb3ef7ffabdfde, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2041,7 +2041,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _child: {fileID: 803633939}
-  _headPlaceholderTf: {fileID: 1353339701}
   _lastDirection: 3
   FoodEaten:
     m_PersistentCalls:
@@ -2049,6 +2048,21 @@ MonoBehaviour:
       - m_Target: {fileID: 844530295}
         m_TargetAssemblyTypeName: Snake3.FoodController, Snake3
         m_MethodName: SpawnFood
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  SnakeCrashed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 844530291}
+        m_TargetAssemblyTypeName: Snake3.SnakeController, Snake3
+        m_MethodName: OnSnakeCrashed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2067,14 +2081,14 @@ Transform:
   m_GameObject: {fileID: 1292173922}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.01, y: 1.01, z: 1.01}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1694977304}
   - {fileID: 1890185295}
   - {fileID: 537667094}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!54 &1292173925
 Rigidbody:
@@ -2124,59 +2138,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &1353339699
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1353339701}
-  - component: {fileID: 1353339700}
-  m_Layer: 0
-  m_Name: HeadPlaceholder
-  m_TagString: HeadPlaceholder
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &1353339700
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1353339699}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1353339701
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1353339699}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1369622421
 GameObject:
   m_ObjectHideFlags: 0
@@ -2275,7 +2236,7 @@ PrefabInstance:
       objectReference: {fileID: 407029684}
     - target: {fileID: 3745256461952696404, guid: a6fd6324e8b96ce458fb3ef7ffabdfde, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3745256461952696404, guid: a6fd6324e8b96ce458fb3ef7ffabdfde, type: 3}
       propertyPath: m_LocalPosition.x

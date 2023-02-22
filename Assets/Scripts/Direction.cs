@@ -26,5 +26,19 @@ namespace Snake3
                     nameof(direction), (int)direction, direction.GetType())
             };
         }
+
+        public static Direction Opposite(this Direction direction)
+        {
+            return direction switch
+            {
+                Direction.None => Direction.None,
+                Direction.Up => Direction.Down,
+                Direction.Down => Direction.Up,
+                Direction.Left => Direction.Right,
+                Direction.Right => Direction.Left,
+                _ => throw new System.ComponentModel.InvalidEnumArgumentException(
+                    nameof(direction), (int)direction, direction.GetType())
+            };
+        }
     }
 }

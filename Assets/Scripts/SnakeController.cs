@@ -18,5 +18,10 @@ namespace Snake3
             var direction = _inputManager.LastInput;
             _snakeHeadItem.DoMovement(direction);
         }
+
+        public void OnSnakeCrashed()
+        {
+            enabled = false;
+        }
     }
 }
