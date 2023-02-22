@@ -1,29 +1,24 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Snake3
 {
-    public class SnakeItem : MonoBehaviour
+    public class SnakeHeadItem : SnakeSegmentItem
     {
-        private Vector3Int _position;
-        private Transform _transform;
+        [SerializeField] private Transform _headPlaceholderTf;
+        [SerializeField] private Direction _lastDirection;
 
-        private void Awake()
-        {
-            _transform = transform;
-        }
+        public UnityEvent FoodEaten;
 
-        private void Start()
-        {
-            var startingPosition = Vector3Int.RoundToInt(transform.position);
-            _position = startingPosition;
-            _transform.position = startingPosition;
-        }
+        private bool _createChild;
 
-        public void Move(Direction direction)
+        public void DoMovement(Direction direction)
         {
+            direction = (direction == Direction.None) ? _lastDirection : direction;
+
             var movementDelta = Vector3Int.RoundToInt(transform.rotation * direction.AsVector3Int());
-            var newPosition = _position + movementDelta;
+            var newPosition = Position + movementDelta;
             var rotation = Quaternion.identity;
 
             if (IsOverEdge(newPosition))
@@ -33,25 +28,23 @@ namespace Snake3
                 rotation = rotationCorrection;
             }
 
-            ApplyMovement(newPosition, rotation);
-        }
+            //_headPlaceholderTf.position = newPosition;
 
-        private void ApplyMovement(Vector3Int newPosition, Quaternion rotation)
-        {
-            _position = newPosition;
-            _transform.position = newPosition;
-            _transform.localRotation *= rotation;
+            RotateTo(rotation);
+            MoveWithChild(newPosition, _createChild);
+            _createChild = false;
+            _lastDirection = direction;
         }
 
         private bool IsOverEdge(Vector3Int newPosition)
         {
             // The decision is based on what side of the world we're currently on.
-            return _position switch
+            return Position switch
             {
                 { x: -4 or 5 } => newPosition.y is < -3 or > 4 || newPosition.z is < -3 or > 4,
                 { y: -4 or 5 } => newPosition.x is < -3 or > 4 || newPosition.z is < -3 or > 4,
                 { z: -4 or 5 } => newPosition.y is < -3 or > 4 || newPosition.x is < -3 or > 4,
-                _ => throw new ArgumentException($"Snake is in invalid position: {_position}")
+                _ => throw new ArgumentException($"Snake is in invalid position: {Position}")
             };
         }
 
@@ -68,6 +61,15 @@ namespace Snake3
                 _ => throw new System.ComponentModel.InvalidEnumArgumentException(nameof(dir), (int)dir, dir.GetType())
             };
             return (positionCorrection, rotationCorrection);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Food"))
+            {
+                FoodEaten.Invoke();
+                _createChild = true;
+            }
         }
     }
 }
