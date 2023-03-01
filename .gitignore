@@ -1,7 +1,8 @@
-/Temp/
-/obj/
+/Build/
 /Library/
 /Logs/
+/obj/
+/Temp/
 /UserSettings/
 
 # JetBrains Rider generated folder

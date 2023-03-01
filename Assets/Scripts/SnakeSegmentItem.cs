@@ -16,12 +16,12 @@ namespace Snake3
         private void Awake()
         {
             _transform = transform;
+            _hasChild = _child != null;
         }
 
         private void Start()
         {
-            _hasChild = _child != null;
-            var startingPosition = Vector3Int.RoundToInt(transform.position);
+            var startingPosition = Vector3Int.RoundToInt(_transform.position);
             Position = startingPosition;
             _transform.position = startingPosition;
         }

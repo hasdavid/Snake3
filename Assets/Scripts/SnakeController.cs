@@ -19,7 +19,17 @@ namespace Snake3
             _snakeHeadItem.DoMovement(direction);
         }
 
-        public void OnSnakeCrashed()
+        public void OnGamePaused()
+        {
+            enabled = false;
+        }
+
+        public void OnGameResumed()
+        {
+            enabled = true;
+        }
+
+        public void OnGameOver()
         {
             enabled = false;
         }

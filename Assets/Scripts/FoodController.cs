@@ -15,14 +15,21 @@ namespace Snake3
             var numSegments
                 = FindObjectsOfType<SnakeHeadItem>().Length
                 + FindObjectsOfType<SnakeSegmentItem>().Length;
-            _numEmptyFields = 8 * 8 * 6 - numSegments;
+            _numEmptyFields = 8 * 8 * 6 - numSegments + 1;  // +1 so that we can call SpawnFood() immediately (which decrements this variable).
+            SpawnFood();
         }
 
-        public void SpawnFood()
+        public void OnFoodEaten()
+        {
+            SpawnFood();
+        }
+
+        private void SpawnFood()
         {
             // If null, the player has won
             _foodTf.position = GetRandomEmptyPosition().Value; // Todo: Exception
             _numEmptyFields--;
+            // Todo: Maybe we should decrement this in reaction to creating one more body segment.
         }
 
         private Vector3Int? GetRandomEmptyPosition()

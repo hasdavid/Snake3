@@ -9,7 +9,7 @@ namespace Snake3
         [SerializeField] private Direction _lastDirection;
 
         public UnityEvent FoodEaten;
-        public UnityEvent SnakeCrashed;
+        public UnityEvent GameOver;
 
         private bool _createChild;
 
@@ -73,7 +73,7 @@ namespace Snake3
             }
             else if (other.CompareTag("BodySegment"))
             {
-                SnakeCrashed.Invoke();
+                GameOver.Invoke();
             }
         }
     }
