@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Snake3
 {
@@ -8,10 +7,14 @@ namespace Snake3
     {
         [SerializeField] private Direction _lastDirection;
 
-        public UnityEvent FoodEaten;
-        public UnityEvent GameOver;
-
         private bool _createChild;
+        private EventManager _eventManager;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            _eventManager = FindObjectOfType<EventManager>();
+        }
 
         public void DoMovement(Direction direction)
         {
@@ -69,12 +72,12 @@ namespace Snake3
         {
             if (other.CompareTag("Food"))
             {
-                FoodEaten.Invoke();
+                _eventManager.FoodEaten.Invoke();
                 _createChild = true;
             }
             else if (other.CompareTag("BodySegment"))
             {
-                GameOver.Invoke();
+                _eventManager.GameOver.Invoke();
             }
         }
     }

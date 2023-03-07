@@ -1,17 +1,19 @@
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace Snake3
 {
     public class GameManager : MonoBehaviour
     {
-        public UnityEvent GameResumed;
-        public UnityEvent GamePaused;
-
         public int Score;
 
         private GameState _gameState;
+        private EventManager _eventManager;
+
+        private void Awake()
+        {
+            _eventManager = FindObjectOfType<EventManager>();
+        }
 
         private void Start()
         {
@@ -57,14 +59,14 @@ namespace Snake3
         {
             Debug.Log("Pausing the game.");
             _gameState = GameState.Paused;
-            GamePaused.Invoke();
+            _eventManager.GamePaused.Invoke();
         }
 
         private void ResumeGame()
         {
             Debug.Log("Resuming the game.");
             _gameState = GameState.Running;
-            GameResumed.Invoke();
+            _eventManager.GameResumed.Invoke();
         }
 
         private void QuitGame()

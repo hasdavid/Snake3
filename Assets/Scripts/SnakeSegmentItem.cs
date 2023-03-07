@@ -13,7 +13,7 @@ namespace Snake3
         private Transform _transform;
         private bool _hasChild;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             _transform = transform;
             _hasChild = _child != null;
