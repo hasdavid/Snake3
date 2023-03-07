@@ -15,6 +15,7 @@ namespace Snake3
 
         public void DoMovement(Direction direction)
         {
+            // Todo: This may be better in SnakeController
             if (direction == Direction.None || direction == _lastDirection.Opposite())
             {
                 direction = _lastDirection;
