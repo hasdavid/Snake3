@@ -9,6 +9,12 @@ namespace Snake3
         [SerializeField] private SnakeSegmentItem _snakeHead;
 
         private int _numEmptyFields;
+        private EventManager _eventManager;
+
+        private void Awake()
+        {
+            _eventManager = FindObjectOfType<EventManager>();
+        }
 
         private void Start()
         {
@@ -24,12 +30,23 @@ namespace Snake3
             SpawnFood();
         }
 
+        /**
+         * If the player manages to fill the whole world with Snake, there won't be any space left to spawn food.
+         * In that case, the player has won and the game should end.
+         */
         private void SpawnFood()
         {
-            // If null, the player has won
-            _foodTf.position = GetRandomEmptyPosition().Value; // Todo: Exception
-            _numEmptyFields--;
-            // Todo: Maybe we should decrement this in reaction to creating one more body segment.
+            var newPos = GetRandomEmptyPosition();
+            if (newPos.HasValue)
+            {
+                _foodTf.position = newPos.Value;
+                _numEmptyFields--;
+                // Todo: Maybe we should decrement this in reaction to creating one more body segment.
+            }
+            else
+            {
+                _eventManager.GameOver.Invoke();
+            }
         }
 
         private Vector3Int? GetRandomEmptyPosition()
