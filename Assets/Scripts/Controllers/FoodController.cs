@@ -25,7 +25,7 @@ namespace Snake3
             SpawnFood();
         }
 
-        public void OnFoodEaten()
+        public void OnSimulationFoodEaten()
         {
             SpawnFood();
         }
@@ -45,7 +45,7 @@ namespace Snake3
             }
             else
             {
-                _eventManager.GameOver.Invoke();
+                _eventManager.SimulationEnded.Invoke();
             }
         }
 

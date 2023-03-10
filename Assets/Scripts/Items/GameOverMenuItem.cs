@@ -8,7 +8,7 @@ namespace Snake3
         [SerializeField] private GameManager _gameManager;
         [SerializeField] private Text _scoreText;
 
-        public void OnGameOver()
+        public void OnSimulationEnded()
         {
             _scoreText.text = string.Format(_scoreText.text, _gameManager.Score);
             gameObject.SetActive(true);

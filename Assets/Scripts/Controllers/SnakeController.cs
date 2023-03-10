@@ -33,17 +33,17 @@ namespace Snake3
             _snakeHeadItem.DoMovement(_latestInput);
         }
 
-        public void OnGamePaused()
+        public void OnSimulationPaused()
         {
             enabled = false;
         }
 
-        public void OnGameResumed()
+        public void OnSimulationResumed()
         {
             enabled = true;
         }
 
-        public void OnGameOver()
+        public void OnSimulationEnded()
         {
             enabled = false;
         }

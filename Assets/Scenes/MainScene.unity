@@ -351,7 +351,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3745256461952696404, guid: a6fd6324e8b96ce458fb3ef7ffabdfde, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3745256461952696404, guid: a6fd6324e8b96ce458fb3ef7ffabdfde, type: 3}
       propertyPath: m_LocalPosition.x
@@ -979,7 +979,7 @@ PrefabInstance:
       objectReference: {fileID: 171717803}
     - target: {fileID: 3745256461952696404, guid: a6fd6324e8b96ce458fb3ef7ffabdfde, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3745256461952696404, guid: a6fd6324e8b96ce458fb3ef7ffabdfde, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1372,7 +1372,7 @@ PrefabInstance:
       objectReference: {fileID: 1439036248}
     - target: {fileID: 3745256461952696404, guid: a6fd6324e8b96ce458fb3ef7ffabdfde, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3745256461952696404, guid: a6fd6324e8b96ce458fb3ef7ffabdfde, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1546,7 +1546,7 @@ GameObject:
   m_Component:
   - component: {fileID: 844530290}
   m_Layer: 0
-  m_Name: Managers and Controllers
+  m_Name: Managers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1564,13 +1564,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1758659986}
   - {fileID: 2118641375}
-  - {fileID: 1610334862}
-  - {fileID: 1824519117}
-  - {fileID: 2116336814}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &903966451
 GameObject:
@@ -1705,7 +1701,7 @@ Transform:
   - {fileID: 1720401382}
   - {fileID: 627704380}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &978183731
 GameObject:
@@ -1962,7 +1958,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1005379732
 GameObject:
@@ -2344,72 +2340,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _child: {fileID: 803633939}
   _lastDirection: 3
-  FoodEaten:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2116336815}
-        m_TargetAssemblyTypeName: Snake3.FoodController, Snake3
-        m_MethodName: OnFoodEaten
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-      - m_Target: {fileID: 1758659987}
-        m_TargetAssemblyTypeName: Snake3.GameManager, Snake3
-        m_MethodName: OnFoodEaten
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-  GameOver:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1758659987}
-        m_TargetAssemblyTypeName: Snake3.GameManager, Snake3
-        m_MethodName: OnGameOver
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-      - m_Target: {fileID: 1610334863}
-        m_TargetAssemblyTypeName: Snake3.SnakeController, Snake3
-        m_MethodName: OnGameOver
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-      - m_Target: {fileID: 2032288496}
-        m_TargetAssemblyTypeName: Snake3.GameOverMenuItem, Snake3
-        m_MethodName: OnGameOver
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
 --- !u!4 &1292173924
 Transform:
   m_ObjectHideFlags: 0
@@ -2426,7 +2356,7 @@ Transform:
   - {fileID: 1890185295}
   - {fileID: 537667094}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!54 &1292173925
 Rigidbody:
@@ -2654,7 +2584,7 @@ PrefabInstance:
       objectReference: {fileID: 407029684}
     - target: {fileID: 3745256461952696404, guid: a6fd6324e8b96ce458fb3ef7ffabdfde, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3745256461952696404, guid: a6fd6324e8b96ce458fb3ef7ffabdfde, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2716,6 +2646,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7adfceaa26424e46bba003a75e4ae5ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1439192100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1439192101}
+  m_Layer: 0
+  m_Name: Controllers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1439192101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1439192100}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 551.5405, y: 248.71127, z: 188.90094}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1610334862}
+  - {fileID: 1824519117}
+  - {fileID: 2116336814}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1482396722
 GameObject:
   m_ObjectHideFlags: 0
@@ -3180,10 +3144,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2032288495}
   - {fileID: 187570780}
+  - {fileID: 2032288495}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3410,12 +3374,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1610334861}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -551.5405, y: -248.71127, z: -188.90094}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 844530290}
+  m_Father: {fileID: 1439192101}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1610334863
@@ -3655,13 +3619,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1758659985}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 844530290}
-  m_RootOrder: -1
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1758659987
 MonoBehaviour:
@@ -3700,12 +3664,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1824519116}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -551.5405, y: -248.71127, z: -188.90094}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 844530290}
+  m_Father: {fileID: 1439192101}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1824519118
@@ -3724,6 +3688,11 @@ MonoBehaviour:
   _snakeTf: {fileID: 1292173924}
   _worldTf: {fileID: 946813079}
   _cameraDistance: 15
+  _wasFixedUpdate: 1
+  _moveTarget: {x: 0, y: 0, z: 0}
+  _moveDistance: 0
+  _snakeUpVector: {x: 0, y: 0, z: 0}
+  _fixedUpdateTime: 0
 --- !u!1 &1849604943
 GameObject:
   m_ObjectHideFlags: 0
@@ -3814,7 +3783,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1871363492
 GameObject:
@@ -4110,12 +4079,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2116336813}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -551.5405, y: -248.71127, z: -188.90094}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 844530290}
+  m_Father: {fileID: 1439192101}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2116336815
@@ -4176,39 +4145,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3734035241bf4a97882d299242858cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FoodEaten:
+  SimulationPaused:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2116336815}
-        m_TargetAssemblyTypeName: Snake3.FoodController, Snake3
-        m_MethodName: OnFoodEaten
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-      - m_Target: {fileID: 1758659987}
-        m_TargetAssemblyTypeName: Snake3.GameManager, Snake3
-        m_MethodName: OnFoodEaten
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-  GameOver:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1758659987}
-        m_TargetAssemblyTypeName: Snake3.GameManager, Snake3
-        m_MethodName: OnGameOver
+      - m_Target: {fileID: 187570781}
+        m_TargetAssemblyTypeName: Snake3.PauseMenuItem, Snake3
+        m_MethodName: OnSimulationPaused
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4220,7 +4162,61 @@ MonoBehaviour:
         m_CallState: 1
       - m_Target: {fileID: 1610334863}
         m_TargetAssemblyTypeName: Snake3.SnakeController, Snake3
-        m_MethodName: OnGameOver
+        m_MethodName: OnSimulationPaused
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  SimulationResumed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 187570781}
+        m_TargetAssemblyTypeName: Snake3.PauseMenuItem, Snake3
+        m_MethodName: OnSimulationResumed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+      - m_Target: {fileID: 1610334863}
+        m_TargetAssemblyTypeName: Snake3.SnakeController, Snake3
+        m_MethodName: OnSimulationResumed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  SimulationEnded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1758659987}
+        m_TargetAssemblyTypeName: Snake3.GameManager, Snake3
+        m_MethodName: OnSimulationEnded
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+      - m_Target: {fileID: 1610334863}
+        m_TargetAssemblyTypeName: Snake3.SnakeController, Snake3
+        m_MethodName: OnSimulationEnded
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4232,7 +4228,7 @@ MonoBehaviour:
         m_CallState: 1
       - m_Target: {fileID: 2032288496}
         m_TargetAssemblyTypeName: Snake3.GameOverMenuItem, Snake3
-        m_MethodName: OnGameOver
+        m_MethodName: OnSimulationEnded
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4242,12 +4238,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
-  GameResumed:
+  SimulationFoodEaten:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 187570781}
-        m_TargetAssemblyTypeName: Snake3.PauseMenuItem, Snake3
-        m_MethodName: OnGameResumed
+      - m_Target: {fileID: 2116336815}
+        m_TargetAssemblyTypeName: Snake3.FoodController, Snake3
+        m_MethodName: OnSimulationFoodEaten
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4257,9 +4253,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
-      - m_Target: {fileID: 1610334863}
-        m_TargetAssemblyTypeName: Snake3.SnakeController, Snake3
-        m_MethodName: OnGameResumed
+      - m_Target: {fileID: 1758659987}
+        m_TargetAssemblyTypeName: Snake3.GameManager, Snake3
+        m_MethodName: OnSimulationFoodEaten
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4269,36 +4265,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 1
-  GamePaused:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 187570781}
-        m_TargetAssemblyTypeName: Snake3.PauseMenuItem, Snake3
-        m_MethodName: OnGamePaused
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-      - m_Target: {fileID: 1610334863}
-        m_TargetAssemblyTypeName: Snake3.SnakeController, Snake3
-        m_MethodName: OnGamePaused
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-  GameWon:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &2125340828
 GameObject:
   m_ObjectHideFlags: 0
@@ -4472,7 +4438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8159468540997404791, guid: 33ab4863a68237442b403148acc2e984, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8159468540997404791, guid: 33ab4863a68237442b403148acc2e984, type: 3}
       propertyPath: m_LocalPosition.x

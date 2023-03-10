@@ -72,12 +72,12 @@ namespace Snake3
         {
             if (other.CompareTag("Food"))
             {
-                _eventManager.FoodEaten.Invoke();
+                _eventManager.SimulationFoodEaten.Invoke();
                 _createChild = true;
             }
             else if (other.CompareTag("BodySegment"))
             {
-                _eventManager.GameOver.Invoke();
+                _eventManager.SimulationEnded.Invoke();
             }
         }
     }
