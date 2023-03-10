@@ -13,6 +13,11 @@ namespace Snake3
             _snakeHeadItem = FindObjectOfType<SnakeHeadItem>();
         }
 
+        private void Start()
+        {
+            enabled = false;
+        }
+
         /**
          * Every frame, take user's input and store it, overwriting any previous input.
          */
@@ -31,6 +36,11 @@ namespace Snake3
         private void FixedUpdate()
         {
             _snakeHeadItem.DoMovement(_latestInput);
+        }
+
+        public void OnSimulationStarted()
+        {
+            enabled = true;
         }
 
         public void OnSimulationPaused()

@@ -55,13 +55,17 @@ namespace Snake3
             var i = 0;
             foreach (var position in IterateWorldPositions())
             {
-                if (!IsPositionEmpty(position)) continue;
-                if (i == randomIndex)
+                if (IsPositionEmpty(position))
                 {
-                    return position;
+                    if (i == randomIndex)
+                    {
+                        return position;
+                    }
+
+                    i++;
                 }
-                i++;
             }
+
             // There are no empty positions.
             return null;
         }

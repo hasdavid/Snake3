@@ -5,6 +5,10 @@ namespace Snake3
 {
     public class GameManager : MonoBehaviour
     {
+        // We use a static variable here to remember whether to show the StartGame screen or not.
+        // This usage is justified by its simplicity, as other solutions are e.g. singletons and persistent GameObjects.
+        private static bool _firstGame = true;
+
         public int Score;
 
         private ProgramState _programState;
@@ -17,15 +21,31 @@ namespace Snake3
 
         private void Start()
         {
-            Time.fixedDeltaTime = 1.0f / 3;
+            if (_firstGame)
+            {
+                // First thing after launching the game.
+                Time.fixedDeltaTime = 1.0f / 3;
+                _programState = ProgramState.ApplicationStarted;
+                _firstGame = false;
+            }
+            else
+            {
+                // The user pressed restart at least once.
+                _programState = ProgramState.SimulationRunning;
+                // Skip the "Press any button to start" prompt.
+                StartSimulation();
+            }
+
             Score = 0;
-            _programState = ProgramState.SimulationRunning;
         }
 
         private void Update()
         {
             switch (_programState)
             {
+                case ProgramState.ApplicationStarted:
+                    if (Input.anyKeyDown) StartSimulation();
+                    break;
                 case ProgramState.SimulationPaused:
                     if (Input.GetKeyDown("escape")) ResumeSimulation();
                     else if (Input.GetKeyDown("r")) RestartSimulation();
@@ -67,6 +87,13 @@ namespace Snake3
             Debug.Log("Resuming the simulation.");
             _programState = ProgramState.SimulationRunning;
             _eventManager.SimulationResumed.Invoke();
+        }
+
+        private void StartSimulation()
+        {
+            Debug.Log("Starting the simulation.");
+            _programState = ProgramState.SimulationRunning;
+            _eventManager.SimulationStarted.Invoke();
         }
 
         private void RestartSimulation()
