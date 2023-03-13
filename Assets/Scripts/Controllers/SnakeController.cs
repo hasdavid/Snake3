@@ -5,13 +5,10 @@ namespace Snake3
 {
     public class SnakeController : MonoBehaviour
     {
-        private SnakeHeadItem _snakeHeadItem;
+        [SerializeField] private SnakeHeadItem _snakeHeadItem;
+        [SerializeField] private GameObject _headAliveGo;
+        [SerializeField] private GameObject _headDeadGo;
         private Direction _latestInput;
-
-        private void Awake()
-        {
-            _snakeHeadItem = FindObjectOfType<SnakeHeadItem>();
-        }
 
         private void Start()
         {
@@ -55,6 +52,8 @@ namespace Snake3
 
         public void OnSimulationEnded()
         {
+            _headAliveGo.SetActive(false);
+            _headDeadGo.SetActive(true);
             enabled = false;
         }
 
