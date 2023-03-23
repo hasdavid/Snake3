@@ -24,7 +24,7 @@ namespace Snake3
             if (_firstGame)
             {
                 // First thing after launching the game.
-                Time.fixedDeltaTime = 1.0f / 3;
+                Time.fixedDeltaTime = 1.0f / 5;
                 _programState = ProgramState.ApplicationStarted;
                 _firstGame = false;
             }
