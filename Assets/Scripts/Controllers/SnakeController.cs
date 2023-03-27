@@ -1,14 +1,14 @@
-using System;
 using UnityEngine;
 
 namespace Snake3
 {
     public class SnakeController : MonoBehaviour
     {
+        [SerializeField] private InputManager _inputManager;
         [SerializeField] private SnakeHeadItem _snakeHeadItem;
         [SerializeField] private GameObject _headAliveGo;
         [SerializeField] private GameObject _headDeadGo;
-        private Direction _latestInput;
+        private Direction _lastInput;
 
         private void Start()
         {
@@ -16,23 +16,18 @@ namespace Snake3
         }
 
         /**
-         * Every frame, take user's input and store it, overwriting any previous input.
-         */
-        private void Update()
-        {
-            var newDirection = GetDirectionFromInput();
-            if (newDirection is not Direction.None)
-            {
-                _latestInput = newDirection;
-            }
-        }
-
-        /**
          * Every game tick, move the Snake according to user's last input.
          */
         private void FixedUpdate()
         {
-            _snakeHeadItem.DoMovement(_latestInput);
+            var direction = ReadInput();
+
+            if (!direction.HasValue)
+            {
+                direction = _snakeHeadItem.Heading;
+            }
+
+            _snakeHeadItem.DoMovement(direction.Value);
         }
 
         public void OnSimulationStarted()
@@ -57,21 +52,34 @@ namespace Snake3
             enabled = false;
         }
 
-        private static Direction GetDirectionFromInput()
+        private Direction? ReadInput()
         {
-            var horizontal = Mathf.RoundToInt(Input.GetAxisRaw("Horizontal"));
-            var vertical = Mathf.RoundToInt(Input.GetAxisRaw("Vertical"));
+            Direction? direction;
 
-            // Prefer horizontal input.
-            return (horizontal, vertical) switch
+            // Iterate through every Direction in the queue, popping them, until we find one that's valid, or empty the list.
+            while (true)
             {
-                (-1, 0) or (-1, -1) or (-1, 1) => Direction.Left,
-                (1, 0) or (1, -1) or (1, 1) => Direction.Right,
-                (0, 1) => Direction.Up,
-                (0, -1) => Direction.Down,
-                (0, 0) => Direction.None,
-                _ => throw new ArgumentException($"Invalid input: {(horizontal, vertical)}")
-            };
+                // If we found no usable input, return null.
+                if (_inputManager.IsQueueEmpty())
+                {
+                    direction = null;
+                    break;
+                }
+
+                var item = _inputManager.PopQueue();
+
+                // If we found a usable input, return it.
+                if (item != _snakeHeadItem.Heading && item != _snakeHeadItem.Heading.Opposite())
+                {
+                    direction = item;
+                    break;
+                }
+            }
+
+            // Forget any extra input
+            _inputManager.ClearQueue();
+
+            return direction;
         }
     }
 }

@@ -5,7 +5,9 @@ namespace Snake3
 {
     public class SnakeHeadItem : SnakeSegmentItem
     {
-        [SerializeField] private Direction _lastDirection;
+        [SerializeField] private Direction _heading;
+
+        public Direction Heading => _heading;
 
         private bool _createChild;
         private EventManager _eventManager;
@@ -18,11 +20,7 @@ namespace Snake3
 
         public void DoMovement(Direction direction)
         {
-            // Todo: This may be better in SnakeController
-            if (direction == Direction.None || direction == _lastDirection.Opposite())
-            {
-                direction = _lastDirection;
-            }
+            Debug.Assert(direction != Direction.None);
 
             var movementDelta = Vector3Int.RoundToInt(transform.rotation * direction.AsVector3Int());
             var newPosition = Position + movementDelta;
@@ -38,7 +36,7 @@ namespace Snake3
             RotateTo(rotation);
             MoveWithChild(newPosition, _createChild);
             _createChild = false;
-            _lastDirection = direction;
+            _heading = direction;
         }
 
         private bool IsOverEdge(Vector3Int newPosition)
