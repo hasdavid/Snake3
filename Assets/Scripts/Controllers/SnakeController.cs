@@ -2,32 +2,37 @@ using UnityEngine;
 
 namespace Snake3
 {
+    /**
+     * Controls the behavior of the Snake.
+     *
+     * We use Unity's FixedUpdate() to progress the game by moving Snake.
+     */
     public class SnakeController : MonoBehaviour
     {
+        // ----------------------------
+        // Fields
+        // ----------------------------
+
         [SerializeField] private InputManager _inputManager;
         [SerializeField] private SnakeHeadItem _snakeHeadItem;
         [SerializeField] private GameObject _headAliveGo;
         [SerializeField] private GameObject _headDeadGo;
+
         private Direction _lastInput;
+
+        // ----------------------------
+        // Event Functions
+        // ----------------------------
 
         private void Start()
         {
             enabled = false;
         }
 
-        /**
-         * Every game tick, move the Snake according to user's last input.
-         */
         private void FixedUpdate()
         {
-            var direction = ReadInput();
-
-            if (!direction.HasValue)
-            {
-                direction = _snakeHeadItem.Heading;
-            }
-
-            _snakeHeadItem.DoMovement(direction.Value);
+            var direction = ReadInput() ?? _snakeHeadItem.Heading;
+            _snakeHeadItem.DoMovement(direction);
         }
 
         public void OnSimulationStarted()
@@ -47,16 +52,29 @@ namespace Snake3
 
         public void OnSimulationEnded()
         {
+            // Replace the head with its dead model.
             _headAliveGo.SetActive(false);
             _headDeadGo.SetActive(true);
             enabled = false;
         }
 
+        // ----------------------------
+        // Methods
+        // ----------------------------
+
+        /**
+         * Tries to get a Direction from the input queue of the InputManager.
+         *
+         * Iterates through the queue, popping the directions, until it finds one, that's valid, or empties the list.
+         *
+         * Clears the queue afterwards.
+         *
+         * Returns null, if no valid direction was found.
+         */
         private Direction? ReadInput()
         {
             Direction? direction;
 
-            // Iterate through every Direction in the queue, popping them, until we find one that's valid, or empty the list.
             while (true)
             {
                 // If we found no usable input, return null.

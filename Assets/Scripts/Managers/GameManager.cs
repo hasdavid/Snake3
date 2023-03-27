@@ -3,27 +3,42 @@ using UnityEngine.SceneManagement;
 
 namespace Snake3
 {
+    /**
+     * Manages the game.
+     *
+     * Keeps track of the score and handles events that start, pause, resume and end the game.
+     *
+     * Is expected to be destroyed and instantiated again when the game restarts.
+     *
+     * There is one behavior, that should only happen before the first game when the program starts, and that is
+     * showing the menu with the game title. We keep a static variable for this purpose - to remember whether to show
+     * the StartGame screen or not. Although static variables are basically global variables and their use for flow
+     * control is frowned upon, its usage here is justified by its simplicity. Other solutions include using singletons
+     * or persistent GameObjects and lead to much more complicated code.
+     */
     public class GameManager : MonoBehaviour
     {
-        // We use a static variable here to remember whether to show the StartGame screen or not.
-        // This usage is justified by its simplicity, as other solutions are e.g. singletons and persistent GameObjects.
-        private static bool _firstGame = true;
+        // ----------------------------
+        // Fields
+        // ----------------------------
+
+        private static bool _firstGame = true;  // Static variable - see above for reasoning.
+
+        [SerializeField] private EventManager _eventManager;
 
         public int Score;
 
         private ProgramState _programState;
-        private EventManager _eventManager;
 
-        private void Awake()
-        {
-            _eventManager = FindObjectOfType<EventManager>();
-        }
+        // ----------------------------
+        // Event Functions
+        // ----------------------------
 
         private void Start()
         {
             if (_firstGame)
             {
-                // First thing after launching the game.
+                // First thing after launching the program.
                 Time.fixedDeltaTime = 1.0f / 5;
                 _programState = ProgramState.ApplicationStarted;
                 _firstGame = false;
@@ -31,7 +46,6 @@ namespace Snake3
             else
             {
                 // The user pressed restart at least once.
-                _programState = ProgramState.SimulationRunning;
                 // Skip the "Press any button to start" prompt.
                 StartSimulation();
             }
@@ -39,6 +53,9 @@ namespace Snake3
             Score = 0;
         }
 
+        /**
+         * Every frame, check the input for pressed buttons and respond accordingly.
+         */
         private void Update()
         {
             switch (_programState)
@@ -75,6 +92,17 @@ namespace Snake3
             Debug.Log("Ending the simulation.");
         }
 
+        // ----------------------------
+        // Methods
+        // ----------------------------
+
+        private void StartSimulation()
+        {
+            Debug.Log("Starting the simulation.");
+            _programState = ProgramState.SimulationRunning;
+            _eventManager.SimulationStarted.Invoke();
+        }
+
         private void PauseSimulation()
         {
             Debug.Log("Pausing the simulation.");
@@ -87,13 +115,6 @@ namespace Snake3
             Debug.Log("Resuming the simulation.");
             _programState = ProgramState.SimulationRunning;
             _eventManager.SimulationResumed.Invoke();
-        }
-
-        private void StartSimulation()
-        {
-            Debug.Log("Starting the simulation.");
-            _programState = ProgramState.SimulationRunning;
-            _eventManager.SimulationStarted.Invoke();
         }
 
         private void RestartSimulation()

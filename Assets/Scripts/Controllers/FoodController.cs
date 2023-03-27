@@ -3,25 +3,31 @@ using UnityEngine;
 
 namespace Snake3
 {
+    /**
+     * Controls spawning of food.
+     */
     public class FoodController : MonoBehaviour
     {
+        // ----------------------------
+        // Fields
+        // ----------------------------
+
         [SerializeField] private Transform _foodTf;
         [SerializeField] private SnakeSegmentItem _snakeHead;
+        [SerializeField] private EventManager _eventManager;
 
         private int _numEmptyFields;
-        private EventManager _eventManager;
 
-        private void Awake()
-        {
-            _eventManager = FindObjectOfType<EventManager>();
-        }
+        // ----------------------------
+        // Event Functions
+        // ----------------------------
 
         private void Start()
         {
-            var numSegments
-                = FindObjectsOfType<SnakeHeadItem>().Length
-                + FindObjectsOfType<SnakeSegmentItem>().Length;
-            _numEmptyFields = 8 * 8 * 6 - numSegments + 1;  // +1 so that we can call SpawnFood() immediately (which decrements this variable).
+            var numSegments = _snakeHead.transform.parent.childCount;
+            // We increment by one so that we can immediately decrement in SpawnFood().
+            _numEmptyFields = 8 * 8 * 6 - numSegments + 1;
+
             SpawnFood();
         }
 
@@ -30,9 +36,17 @@ namespace Snake3
             SpawnFood();
         }
 
+        // ----------------------------
+        // Methods
+        // ----------------------------
+
         /**
+         * Spawn new food.
+         *
+         * Doesn't actually instantiate anything, just moves the same GameObject.
+         *
          * If the player manages to fill the whole world with Snake, there won't be any space left to spawn food.
-         * In that case, the player has won and the game should end.
+         * In that case, the player has won and the game will end.
          */
         private void SpawnFood()
         {
@@ -41,53 +55,72 @@ namespace Snake3
             {
                 _foodTf.position = newPos.Value;
                 _numEmptyFields--;
-                // Todo: Maybe we should decrement this in reaction to creating one more body segment.
             }
             else
             {
+                // No free space left, the player has won.
                 _eventManager.SimulationEnded.Invoke();
             }
         }
 
+        /**
+         * Find and return a randomized empty position in the game world.
+         *
+         * Generates a random number N in the range of number of currently unoccupied spaces.
+         * Then tries to find N-th empty space in the world, always looping in the same order.
+         * Might not be the most efficient, but should cover the world uniformly.
+         *
+         * Returns coordinates of the empty position, or null, if there is none.
+         */
         private Vector3Int? GetRandomEmptyPosition()
         {
-            var randomIndex = Random.Range(0, _numEmptyFields);
-            var i = 0;
-            foreach (var position in IterateWorldPositions())
-            {
-                if (IsPositionEmpty(position))
-                {
-                    if (i == randomIndex)
-                    {
-                        return position;
-                    }
+            if (_numEmptyFields <= 0) return null;
 
-                    i++;
+            var targetIndex = Random.Range(0, _numEmptyFields);
+            var i = 0;
+            foreach (var position in GetWorldPositionEnumerator())
+            {
+                if (!IsPositionEmpty(position)) continue;
+
+                if (i == targetIndex)
+                {
+                    return position;
                 }
+
+                i++;
             }
 
             // There are no empty positions.
             return null;
         }
 
-        // Todo: Might be better to just spawn food and check for triggers.
+        /**
+         * Check if given position is empty.
+         *
+         * Iterates through every snake segment and compares their position against the given one.
+         *
+         * Might not be the most efficient way to achieve that.
+         */
         private bool IsPositionEmpty(Vector3Int position)
         {
             var segment = _snakeHead;
+
             while (segment is not null)
             {
                 if (position == segment.Position)
                 {
                     return false;
                 }
-
                 segment = segment.Child;
             }
 
             return true;
         }
 
-        private static IEnumerable<Vector3Int> IterateWorldPositions()
+        /**
+         * Return an enumerator which traverses the world positions in the same order every time.
+         */
+        private static IEnumerable<Vector3Int> GetWorldPositionEnumerator()
         {
             for (var a = -3; a <= 4; a++)
             {

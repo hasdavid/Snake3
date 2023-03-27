@@ -3,8 +3,18 @@ using UnityEngine;
 
 namespace Snake3
 {
+    /**
+     * Gathers controls from the user.
+     *
+     * Only takes care of the snake controls - which direction it should move. This class doesn't handle input
+     * regarding pausing and unpausing.
+     */
     public class InputManager : MonoBehaviour
     {
+        // ----------------------------
+        // Fields
+        // ----------------------------
+
         private readonly Queue<Direction> _inputQueue = new();
 
         private bool _rightRegistered;
@@ -12,13 +22,48 @@ namespace Snake3
         private bool _upRegistered;
         private bool _downRegistered;
 
+        // ----------------------------
+        // Event Functions
+        // ----------------------------
+
         private void Update()
         {
             RegisterButtonsDown();
         }
 
+        // ----------------------------
+        // Methods
+        // ----------------------------
+
         /**
-         * Adds only buttons, that were just pressed, into the input queue.
+         * Pop an item from the front of the input queue.
+         */
+        public Direction PopQueue()
+        {
+            return _inputQueue.Dequeue();
+        }
+
+        /**
+         * Clear the input queue.
+         */
+        public void ClearQueue()
+        {
+            _inputQueue.Clear();
+        }
+
+        /**
+         * Returns true, if the input queue is empty, or false otherwise.
+         */
+        public bool IsQueueEmpty()
+        {
+            return _inputQueue.Count <= 0;
+        }
+
+        /**
+         * Register which buttons were pressed.
+         *
+         * This variant adds only buttons, that were just pressed, into the input queue. Not the buttons, which are
+         * held. Results in slightly different feel than RegisterButtonsAll().
          */
         private void RegisterButtonsDown()
         {
@@ -61,7 +106,13 @@ namespace Snake3
         }
 
         /**
-         * Adds all currently held buttons into the input queue.
+         * Register which buttons were pressed.
+         *
+         * This variant adds all currently held buttons into the input queue. Results in slightly different feel than
+         * RegisterButtonsDown().
+         *
+         * Currently unused, but kept here for easy switching of the two, should the issue of snake controls ever be
+         * reopened.
          */
         private void RegisterButtonsAll()
         {
@@ -74,21 +125,6 @@ namespace Snake3
             if (left > 0) _inputQueue.Enqueue(Direction.Left);
             if (up > 0) _inputQueue.Enqueue(Direction.Up);
             if (down > 0) _inputQueue.Enqueue(Direction.Down);
-        }
-
-        public Direction PopQueue()
-        {
-            return _inputQueue.Dequeue();
-        }
-
-        public void ClearQueue()
-        {
-            _inputQueue.Clear();
-        }
-
-        public bool IsQueueEmpty()
-        {
-            return _inputQueue.Count <= 0;
         }
     }
 }

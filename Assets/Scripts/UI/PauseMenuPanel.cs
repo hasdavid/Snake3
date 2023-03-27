@@ -3,12 +3,28 @@ using UnityEngine.UI;
 
 namespace Snake3
 {
+    /**
+     * Represents the Pause Menu.
+     *
+     * This menu comes up when the user hits Esc. It goes away with another Esc hit.
+     *
+     * The field _scoreText expects a Text GameObject containing the text that should be formatted with the actual
+     * score. Expects "{0}" somewhere in the string.
+     */
     public class PauseMenuPanel : MonoBehaviour
     {
+        // ----------------------------
+        // Fields
+        // ----------------------------
+
         [SerializeField] private GameManager _gameManager;
         [SerializeField] private Text _scoreText;
 
         private string _unformattedText;
+
+        // ----------------------------
+        // Event Functions
+        // ----------------------------
 
         private void Awake()
         {

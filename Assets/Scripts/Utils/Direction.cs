@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace Snake3
 {
+    /**
+     * Enumeration containing four directions and a special None value.
+     */
     public enum Direction
     {
         None,
@@ -13,6 +16,9 @@ namespace Snake3
 
     public static class DirectionExtensions
     {
+        /**
+         * Return a Vector3Int value corresponding to a given Direction value.
+         */
         public static Vector3Int AsVector3Int(this Direction direction)
         {
             return direction switch
@@ -27,6 +33,9 @@ namespace Snake3
             };
         }
 
+        /**
+         * Return the opposite Direction.
+         */
         public static Direction Opposite(this Direction direction)
         {
             return direction switch

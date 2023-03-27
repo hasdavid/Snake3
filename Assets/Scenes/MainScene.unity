@@ -1761,8 +1761,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e0c938253d4bbf8395f117dd1dd32d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _child: {fileID: 803633939}
   _segmentNumber: 0
+  _child: {fileID: 803633939}
+  _eventManager: {fileID: 2118641376}
   _heading: 4
 --- !u!4 &1292173924
 Transform:
@@ -2675,6 +2676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0fd754df9edce9468cc963c8269109c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _eventManager: {fileID: 2118641376}
   Score: 0
 --- !u!1 &1824519116
 GameObject:
@@ -3044,6 +3046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _foodTf: {fileID: 7254652216526134535}
   _snakeHead: {fileID: 1292173923}
+  _eventManager: {fileID: 2118641376}
 --- !u!1 &2118641374
 GameObject:
   m_ObjectHideFlags: 0
