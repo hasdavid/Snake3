@@ -5,6 +5,7 @@ namespace Snake3
     public class SnakeSegmentItem : MonoBehaviour
     {
         [SerializeField] private SnakeSegmentItem _child;
+        [SerializeField] private int _segmentNumber;
 
         public SnakeSegmentItem Child => _child;
 
@@ -26,6 +27,15 @@ namespace Snake3
             _transform.position = startingPosition;
         }
 
+        /**
+         * Set segment number and rename the GameObject.
+         */
+        private void SetSegmentNumber(int num)
+        {
+            _segmentNumber = num;
+            gameObject.name = "Segment " + num;
+        }
+
         protected void MoveWithChild(Vector3Int newPosition, bool createChild)
         {
             var oldPosition = Position;
@@ -38,6 +48,7 @@ namespace Snake3
             else if (createChild)
             {
                 _child = Instantiate(gameObject).GetComponent<SnakeSegmentItem>();
+                _child.SetSegmentNumber(_segmentNumber + 1);
                 _hasChild = true;
                 _child.MoveWithChild(oldPosition, false);
             }

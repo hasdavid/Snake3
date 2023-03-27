@@ -794,6 +794,10 @@ PrefabInstance:
       propertyPath: _child
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 844620777143713345, guid: a6fd6324e8b96ce458fb3ef7ffabdfde, type: 3}
+      propertyPath: _segmentNumber
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3745256461952696404, guid: a6fd6324e8b96ce458fb3ef7ffabdfde, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -1051,6 +1055,10 @@ PrefabInstance:
       propertyPath: _child
       value: 
       objectReference: {fileID: 1439036248}
+    - target: {fileID: 844620777143713345, guid: a6fd6324e8b96ce458fb3ef7ffabdfde, type: 3}
+      propertyPath: _segmentNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3745256461952696404, guid: a6fd6324e8b96ce458fb3ef7ffabdfde, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1744,6 +1752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _child: {fileID: 803633939}
+  _segmentNumber: 0
   _heading: 4
 --- !u!4 &1292173924
 Transform:
@@ -1912,6 +1921,10 @@ PrefabInstance:
       propertyPath: _child
       value: 
       objectReference: {fileID: 407029684}
+    - target: {fileID: 844620777143713345, guid: a6fd6324e8b96ce458fb3ef7ffabdfde, type: 3}
+      propertyPath: _segmentNumber
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3745256461952696404, guid: a6fd6324e8b96ce458fb3ef7ffabdfde, type: 3}
       propertyPath: m_RootOrder
       value: 11
