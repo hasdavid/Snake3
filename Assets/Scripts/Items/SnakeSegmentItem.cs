@@ -47,11 +47,16 @@ namespace Snake3
             }
             else if (createChild)
             {
-                _child = Instantiate(gameObject).GetComponent<SnakeSegmentItem>();
-                _child.SetSegmentNumber(_segmentNumber + 1);
-                _hasChild = true;
+                CreateChild();
                 _child.MoveWithChild(oldPosition, false);
             }
+        }
+
+        private void CreateChild()
+        {
+            _child = Instantiate(gameObject, transform.parent).GetComponent<SnakeSegmentItem>();
+            _child.SetSegmentNumber(_segmentNumber + 1);
+            _hasChild = true;
         }
 
         protected void RotateTo(Quaternion rotation)
