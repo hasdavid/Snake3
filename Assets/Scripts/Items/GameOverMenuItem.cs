@@ -8,10 +8,19 @@ namespace Snake3
         [SerializeField] private GameManager _gameManager;
         [SerializeField] private Text _scoreText;
 
+        private string _unformattedText;
+
+        private void Awake()
+        {
+            // We want to save the source text at the start, so that we can format it later multiple times.
+            _unformattedText = string.Copy(_scoreText.text);
+        }
+
         public void OnSimulationEnded()
         {
-            _scoreText.text = string.Format(_scoreText.text, _gameManager.Score);
+            // We need to set the object to active first, so that Awake() is called.
             gameObject.SetActive(true);
+            _scoreText.text = string.Format(_unformattedText, _gameManager.Score);
         }
     }
 }
