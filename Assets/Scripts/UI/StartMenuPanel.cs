@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Snake3
 {
-    public class StartMenuItem : MonoBehaviour
+    public class StartMenuPanel : MonoBehaviour
     {
         public void OnSimulationStarted()
         {

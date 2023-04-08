@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Snake3
 {
-    public class PauseMenuItem : MonoBehaviour
+    public class PauseMenuPanel : MonoBehaviour
     {
         [SerializeField] private GameManager _gameManager;
         [SerializeField] private Text _scoreText;
